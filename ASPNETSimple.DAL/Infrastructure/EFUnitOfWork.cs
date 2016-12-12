@@ -16,12 +16,6 @@ namespace ASPNETSimple.DAL.Infrastructure
 
         public EFUnitOfWork(IDbFactory dbFactory)
         {
-            logger.Trace("Sample trace message");
-            logger.Debug("Sample debug message");
-            logger.Info("Sample informational message");
-            logger.Warn("Sample warning message");
-            logger.Error("Sample error message");
-            logger.Fatal("Sample fatal error message");
             this.dbFactory = dbFactory;
         }
 
@@ -55,7 +49,7 @@ namespace ASPNETSimple.DAL.Infrastructure
             }
             */
         }
-
+        /*
         private bool disposed = false;
 
         public virtual void Dispose(bool disposing)
@@ -75,6 +69,7 @@ namespace ASPNETSimple.DAL.Infrastructure
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        */
     }
 
     /*
