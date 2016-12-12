@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using ASPNETSimple.DAL.Entities;
 using ASPNETSimple.DAL.Infrastructure;
-using ASPNETSimple.DAL.Repositories;
 
 namespace ASPNETSimple.WEB.Controllers
 {
@@ -12,12 +11,7 @@ namespace ASPNETSimple.WEB.Controllers
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         public HomeController()
         {
-            logger.Trace("Sample trace message");
-            logger.Debug("Sample debug message");
-            logger.Info("Sample informational message");
-            logger.Warn("Sample warning message");
-            logger.Error("Sample error message");
-            logger.Fatal("Sample fatal error message");
+            logger.Info("Home controller created");
             DbContext = new EFUnitOfWork(new DbFactory());
         }
 

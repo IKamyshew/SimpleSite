@@ -15,7 +15,7 @@ namespace ASPNETSimple.DAL.Infrastructure
             else
             {
                 _dbContext = new EFContext();
-                _dbContext.Database.Log = logger.Warn;
+                _dbContext.Database.Log = logger.Info;
                 logger.Info("Context created");
                 return _dbContext;
             }

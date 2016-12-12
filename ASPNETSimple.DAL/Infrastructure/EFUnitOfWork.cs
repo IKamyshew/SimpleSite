@@ -16,6 +16,7 @@ namespace ASPNETSimple.DAL.Infrastructure
 
         public EFUnitOfWork(IDbFactory dbFactory)
         {
+            logger.Warn("Unit created.");
             this.dbFactory = dbFactory;
         }
 
@@ -61,6 +62,7 @@ namespace ASPNETSimple.DAL.Infrastructure
                     db.Dispose();
                 }
                 this.disposed = true;
+                logger.Warn("Unit Disposed.");
             }
         }
 
