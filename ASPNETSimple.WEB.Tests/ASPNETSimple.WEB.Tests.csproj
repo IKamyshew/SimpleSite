@@ -89,7 +89,7 @@
       <Project>{6293f613-a105-4ba4-acc9-b6d937595f98}</Project>
       <Name>ASPNETSimple.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ASPNETSimple\ASPNETSimple.WEB.csproj">
+    <ProjectReference Include="..\ASPNETSimple.WEB\ASPNETSimple.WEB.csproj">
       <Project>{9749ABDD-8DEB-46C3-893A-206FD58F127A}</Project>
       <Name>ASPNETSimple.WEB</Name>
     </ProjectReference>
