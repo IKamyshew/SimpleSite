@@ -16,7 +16,7 @@ namespace ASPNETSimple.DAL.Infrastructure
             {
                 _dbContext = new EFContext();
                 _dbContext.Database.Log = logger.Warn;
-                logger.Info("EF Context created.");
+                logger.Info("Context created");
                 return _dbContext;
             }
         }
@@ -24,7 +24,10 @@ namespace ASPNETSimple.DAL.Infrastructure
         protected override void DisposeCore()
         {
             if (_dbContext != null)
+            {
+                logger.Info("Context disposed");
                 _dbContext.Dispose();
+            }
         }
         
     }

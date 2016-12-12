@@ -69,7 +69,6 @@
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="NLog.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
