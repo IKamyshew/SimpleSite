@@ -49,7 +49,7 @@ namespace ASPNETSimple.DAL.Infrastructure
             }
             */
         }
-        /*
+        
         private bool disposed = false;
 
         public virtual void Dispose(bool disposing)
@@ -69,7 +69,6 @@ namespace ASPNETSimple.DAL.Infrastructure
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        */
     }
 
     /*

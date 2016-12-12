@@ -1,8 +1,9 @@
-﻿using ASPNETSimple.DAL.Entities;
+﻿using System;
+using ASPNETSimple.DAL.Entities;
 
 namespace ASPNETSimple.DAL.Interfaces
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<User> Users { get; }
         void Save();
