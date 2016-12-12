@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ASPNETSimple.DAL.Entities.User>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<style>
+    label {
+        font-weight: normal;
+        margin: 0;
+        margin-right: 50px;
+    }
+</style>
+
+<h2>Home</h2>
+@foreach (ASPNETSimple.DAL.Entities.User user in Model)
+{
+    <div>
+        <label><strong>ID:</strong> @user.Id</label>
+        <label><strong>Email:</strong> @user.Email</label>
+        <label><strong>FirstName:</strong> @user.FirstName</label>
+        <label><strong>Password:</strong> @user.Password</label>
+    </div>
+}
+
