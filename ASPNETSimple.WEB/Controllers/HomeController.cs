@@ -1,25 +1,26 @@
 ﻿using System.Collections.Generic;
-using System.Configuration;
 using System.Web.Mvc;
-using ASPNETSimple.DAL.Entities;
-using ASPNETSimple.DAL.Infrastructure;
+using ASPNETSimple.BLL.Infrastructure;
+using ASPNETSimple.BLL.Models;
+using ASPNETSimple.BLL.Services.Interfaces;
 
 namespace ASPNETSimple.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        private EFUnitOfWork DbContext;
+        private IUserService UserService;
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        public HomeController()
+        public HomeController(IUserService userService)
         {
-            DbContext = new EFUnitOfWork(ConfigurationManager.ConnectionStrings["EFContext"].ConnectionString);
+            UserService = userService;
             logger.Info("Home controller created");
         }
 
         // GET: Home
         public ActionResult Home()
         {
-            IEnumerable<User> users = DbContext.Users.GetAll();
+            IEnumerable<UserModel> users;
+            ServiceResult serviceResult = UserService.GetAllUsers(out users);
             return View(users);
         }
     }

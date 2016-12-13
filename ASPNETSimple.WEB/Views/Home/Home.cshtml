@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ASPNETSimple.DAL.Entities.User>
+﻿@model IEnumerable<ASPNETSimple.BLL.Models.UserModel>
 
 @{
     ViewBag.Title = "Home";
@@ -13,7 +13,7 @@
 </style>
 
 <h2>Home</h2>
-@foreach (ASPNETSimple.DAL.Entities.User user in Model)
+@foreach (ASPNETSimple.BLL.Models.UserModel user in Model)
 {
     <div>
         <label><strong>ID:</strong> @user.Id</label>
