@@ -18,8 +18,13 @@ namespace ASPNETSimple.WEB.Controllers
         // GET: Home
         public ActionResult Home()
         {
-            IEnumerable<User> users = DbContext.Users.GetAll();
-            return View(users);
+            IEnumerable<UserProfile> profiles = DbContext.UserProfiles.GetAll();
+            return View(profiles);
+        }
+        
+        public void Dispose()
+        {
+            DbContext.Dispose();
         }
     }
 }

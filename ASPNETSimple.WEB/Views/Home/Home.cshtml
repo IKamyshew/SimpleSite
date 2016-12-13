@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ASPNETSimple.DAL.Entities.User>
+﻿@model IEnumerable<ASPNETSimple.DAL.Entities.UserProfile>
 
 @{
     ViewBag.Title = "Home";
@@ -13,13 +13,12 @@
 </style>
 
 <h2>Home</h2>
-@foreach (ASPNETSimple.DAL.Entities.User user in Model)
+@foreach (ASPNETSimple.DAL.Entities.UserProfile profile in Model)
 {
     <div>
-        <label><strong>ID:</strong> @user.Id</label>
-        <label><strong>Email:</strong> @user.Email</label>
-        <label><strong>FirstName:</strong> @user.FirstName</label>
-        <label><strong>Password:</strong> @user.Password</label>
+        <label><strong>ID:</strong> @profile.Id</label>
+        <label><strong>Name:</strong> @profile.Name</label>
+        <label><strong>Address:</strong> @profile.Address</label>
     </div>
 }
 
