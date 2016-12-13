@@ -3,7 +3,7 @@ using ASPNETSimple.DAL.Entities;
 
 namespace ASPNETSimple.DAL.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         IRepository<User> Users { get; }
         void Save();

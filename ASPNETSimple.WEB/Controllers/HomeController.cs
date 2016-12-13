@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
 using ASPNETSimple.DAL.Entities;
 using ASPNETSimple.DAL.Infrastructure;
@@ -11,8 +12,8 @@ namespace ASPNETSimple.WEB.Controllers
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         public HomeController()
         {
+            DbContext = new EFUnitOfWork(ConfigurationManager.ConnectionStrings["EFContext"].ConnectionString);
             logger.Info("Home controller created");
-            DbContext = new EFUnitOfWork(new DbFactory());
         }
 
         // GET: Home

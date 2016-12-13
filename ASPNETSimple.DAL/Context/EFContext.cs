@@ -8,8 +8,7 @@ namespace ASPNETSimple.DAL.Context
     {
         public DbSet<User> Users { get; set; }
 
-        public EFContext()
-            : base("name=EFContext")
+        public EFContext(string connectionString) : base(connectionString)
         {
             Database.SetInitializer<EFContext>(new UsersDbInitializer());
         }

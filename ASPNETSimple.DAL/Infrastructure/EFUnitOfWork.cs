@@ -8,21 +8,24 @@ namespace ASPNETSimple.DAL.Infrastructure
 {
     public class EFUnitOfWork : IUnitOfWork
     {
-        private readonly IDbFactory dbFactory;
-        private EFContext db;
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
+        private readonly IDbFactory dbFactory;
+        private readonly string connectionString;
+        private EFContext db;
 
         private UserRepository userRepository;
 
-        public EFUnitOfWork(IDbFactory dbFactory)
+        public EFUnitOfWork(string connectionString)
         {
-            logger.Warn("Unit created.");
-            this.dbFactory = dbFactory;
+            this.connectionString = connectionString;
+            dbFactory = new DbFactory();
+            logger.Warn("EFUnitOfWork created.");
         }
 
         public EFContext DbContext
         {
-            get { return db ?? (db = dbFactory.GetInstance()); }
+            get { return db ?? (db = dbFactory.GetInstance(connectionString)); }
         }
 
         public IRepository<User> Users
@@ -49,27 +52,6 @@ namespace ASPNETSimple.DAL.Infrastructure
                 throw newException;
             }
             */
-        }
-        
-        private bool disposed = false;
-
-        public virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    db.Dispose();
-                }
-                this.disposed = true;
-                logger.Warn("Unit Disposed.");
-            }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 

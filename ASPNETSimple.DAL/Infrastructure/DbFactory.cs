@@ -9,12 +9,12 @@ namespace ASPNETSimple.DAL.Infrastructure
         private EFContext _dbContext;
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-        public EFContext GetInstance()
+        public EFContext GetInstance(string connectionString)
         {
             if (_dbContext != null) return _dbContext;
             else
             {
-                _dbContext = new EFContext();
+                _dbContext = new EFContext(connectionString);
                 _dbContext.Database.Log = logger.Info;
                 logger.Info("Context created");
                 return _dbContext;

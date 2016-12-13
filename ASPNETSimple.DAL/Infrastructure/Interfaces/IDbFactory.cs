@@ -4,6 +4,6 @@ namespace ASPNETSimple.DAL.Interfaces
 {
     public interface IDbFactory
     {
-        EFContext GetInstance();
+        EFContext GetInstance(string connectionString);
     }
 }
