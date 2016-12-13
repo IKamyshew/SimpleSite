@@ -7,6 +7,7 @@ namespace ASPNETSimple.DAL.Context
     public partial class EFContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
         public EFContext()
             : base("name=EFContext")
@@ -17,6 +18,7 @@ namespace ASPNETSimple.DAL.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
         }
     }
 

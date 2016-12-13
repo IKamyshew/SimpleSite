@@ -3,28 +3,50 @@ using ASPNETSimple.DAL.Entities;
 using ASPNETSimple.DAL.Context;
 using ASPNETSimple.DAL.Interfaces;
 using ASPNETSimple.DAL.Repositories;
+using ASPNETSimple.DAL.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Threading.Tasks;
 
 namespace ASPNETSimple.DAL.Infrastructure
 {
     public class EFUnitOfWork : IUnitOfWork
     {
+        #region Init
         private readonly IDbFactory dbFactory;
         private EFContext db;
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        
+        private ApplicationUserManager userManager;
+        private ApplicationRoleManager roleManager;
 
         private UserRepository userRepository;
+        private IRepository<UserProfile> userProfileRepository;
 
         public EFUnitOfWork(IDbFactory dbFactory)
         {
-            logger.Warn("Unit created.");
+            logger.Warn("UnitOfWork is created.");
             this.dbFactory = dbFactory;
+            userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(DbContext));
+            roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(DbContext));
         }
+        #endregion
 
+        #region Getters
         public EFContext DbContext
         {
             get { return db ?? (db = dbFactory.GetInstance()); }
         }
+        public ApplicationUserManager UserManager
+        {
+            get { return userManager; }
+        }
 
+        public ApplicationRoleManager RoleManager
+        {
+            get { return roleManager; }
+        }
+
+        #region Repositories
         public IRepository<User> Users
         {
             get
@@ -35,6 +57,20 @@ namespace ASPNETSimple.DAL.Infrastructure
             }
         }
 
+        public IRepository<UserProfile> UserProfiles
+        {
+            get
+            {
+                if (userProfileRepository == null)
+                    userProfileRepository = new UserProfileRepository(DbContext);
+                return userProfileRepository;
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region Operations
         public void Save()
         {
             DbContext.SaveChanges();
@@ -50,7 +86,15 @@ namespace ASPNETSimple.DAL.Infrastructure
             }
             */
         }
-        
+
+        public async Task SaveAsync()
+        {
+            await db.SaveChangesAsync();
+        }
+        #endregion
+
+        #region Dispose
+
         private bool disposed = false;
 
         public virtual void Dispose(bool disposing)
@@ -71,6 +115,7 @@ namespace ASPNETSimple.DAL.Infrastructure
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        #endregion
     }
 
     /*
