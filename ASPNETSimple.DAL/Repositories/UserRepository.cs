@@ -4,11 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using ASPNETSimple.DAL.Entities;
 using ASPNETSimple.DAL.Context;
-using ASPNETSimple.DAL.Interfaces;
+using ASPNETSimple.DAL.Repositories.Interfaces;
 
 namespace ASPNETSimple.DAL.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository
     {
         private EFContext db;
 
@@ -22,9 +22,16 @@ namespace ASPNETSimple.DAL.Repositories
             return db.Users;
         }
 
-        public User Get(string id)
+        public User Get(int id)
         {
             return db.Users.Find(id);
+        }
+
+        public User Get(string login, string password)
+        {
+            return db.Users
+                .Where(user => user.Email.Equals(login) && user.Password.Equals(password))
+                .FirstOrDefault();
         }
 
         public void Create(User user)
@@ -42,7 +49,7 @@ namespace ASPNETSimple.DAL.Repositories
             return db.Users.Where(predicate).ToList();
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             User user = db.Users.Find(id);
             if (user != null)

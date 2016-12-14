@@ -1,8 +1,10 @@
 ﻿using System;
-using ASPNETSimple.DAL.Entities;
+using System.Data.Entity.Validation;
+using System.Text;
 using ASPNETSimple.DAL.Context;
 using ASPNETSimple.DAL.Interfaces;
 using ASPNETSimple.DAL.Repositories;
+using ASPNETSimple.DAL.Repositories.Interfaces;
 
 namespace ASPNETSimple.DAL.Infrastructure
 {
@@ -28,7 +30,7 @@ namespace ASPNETSimple.DAL.Infrastructure
             get { return db ?? (db = dbFactory.GetInstance(connectionString)); }
         }
 
-        public IRepository<User> Users
+        public IUserRepository Users
         {
             get
             {
@@ -40,8 +42,6 @@ namespace ASPNETSimple.DAL.Infrastructure
 
         public void Save()
         {
-            DbContext.SaveChanges();
-            /*
             try
             {
                 DbContext.SaveChanges();
@@ -51,11 +51,9 @@ namespace ASPNETSimple.DAL.Infrastructure
                 var newException = new FormattedDbEntityValidationException(e);
                 throw newException;
             }
-            */
         }
     }
-
-    /*
+    
     public class FormattedDbEntityValidationException : Exception
     {
         public FormattedDbEntityValidationException(DbEntityValidationException innerException) :
@@ -95,5 +93,4 @@ namespace ASPNETSimple.DAL.Infrastructure
             }
         }
     }
-    */
 }

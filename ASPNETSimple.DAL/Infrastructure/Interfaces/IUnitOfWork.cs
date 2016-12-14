@@ -1,11 +1,10 @@
-﻿using System;
-using ASPNETSimple.DAL.Entities;
+﻿using ASPNETSimple.DAL.Repositories.Interfaces;
 
 namespace ASPNETSimple.DAL.Interfaces
 {
     public interface IUnitOfWork
     {
-        IRepository<User> Users { get; }
+        IUserRepository Users { get; }
         void Save();
     }
 }
