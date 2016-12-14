@@ -6,6 +6,7 @@ using ASPNETSimple.BLL.Services.Interfaces;
 
 namespace ASPNETSimple.WEB.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IUserService UserService;

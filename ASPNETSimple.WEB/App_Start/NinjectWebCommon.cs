@@ -66,7 +66,7 @@ namespace ASPNETSimple.WEB.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            ASPNETSimple.BLL.Infrastructure.AutoMapperConfiguration.Configure();
+            ASPNETSimple.WEB.Infrastructure.AutoMapperConfiguration.Configure();
             System.Web.Mvc.DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }        
     }
