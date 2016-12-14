@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\AutoMapperConfiguration.cs" />
-    <Compile Include="Infrastructure\Mappings\IUserServiceProfile.cs" />
+    <Compile Include="Infrastructure\Mappings\ModelsToEntitiesProfile.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ServiceResult.cs" />
     <Compile Include="Models\UserModel.cs" />
