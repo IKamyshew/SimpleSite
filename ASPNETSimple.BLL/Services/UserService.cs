@@ -37,5 +37,61 @@ namespace ASPNETSimple.BLL.Services
                 return ServiceResult.Failed(e.Message);
             }
         }
+
+        public ServiceResult GetUser(int id, out UserModel user)
+        {
+            user = null;
+            try
+            {
+                User entity = UnitOfWork.Users.Get(id);
+
+                if (entity == null)
+                    return ServiceResult.Failed("Such user does not exist");
+
+                user = Mapper.Map<User, UserModel>(entity);
+
+                return ServiceResult.Success;
+            }
+            catch (Exception e)
+            {
+                return ServiceResult.Failed(e.Message);
+            }
+        }
+        public ServiceResult GetUser(string login, string password, out UserModel user)
+        {
+            user = null;
+            try
+            {
+                User entity = UnitOfWork.Users.Get(login, password);
+
+                if (entity == null)
+                    return ServiceResult.Failed("Such user does not exist");
+
+                user = Mapper.Map<User, UserModel>(entity);
+
+                return ServiceResult.Success;
+            }
+            catch (Exception e)
+            {
+                return ServiceResult.Failed(e.Message);
+            }
+        }
+
+        public ServiceResult CreateUser(UserModel user)
+        {
+            try
+            {
+                User entity = Mapper.Map<UserModel, User> (user);
+
+                UnitOfWork.Users.Create(entity);
+                UnitOfWork.Save();
+
+                return ServiceResult.Success;
+            }
+            catch (Exception e)
+            {
+                return ServiceResult.Failed(e.Message);
+            }
+        }
     }
 }
