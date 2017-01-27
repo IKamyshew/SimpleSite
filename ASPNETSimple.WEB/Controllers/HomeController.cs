@@ -21,7 +21,9 @@ namespace ASPNETSimple.WEB.Controllers
         public ActionResult Home()
         {
             IEnumerable<UserModel> users;
+
             ServiceResult serviceResult = UserService.GetAllUsers(out users);
+
             return View(users);
         }
     }
