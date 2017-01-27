@@ -1,11 +1,10 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using NUnit.Framework;
 using Ninject;
 
 namespace ASPNETSimple.WEB.Tests.Infrastructure
 {
-
+    /*
     [SetUpFixture]
     public class UnitTestSetupFixture
     {
@@ -28,4 +27,5 @@ namespace ASPNETSimple.WEB.Tests.Infrastructure
             return kernel;
         }
     }
+    */
 }

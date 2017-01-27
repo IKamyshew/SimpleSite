@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using ASPNETSimple.BLL.Models;
 using ASPNETSimple.BLL.Services.Interfaces;
 using ASPNETSimple.BLL.Infrastructure;
-using ASPNETSimple.DAL.Entities;
 using ASPNETSimple.WEB.Controllers;
 using Moq;
 using NUnit.Framework;
@@ -54,7 +53,6 @@ namespace ASPNETSimple.WEB.Tests.Controllers
             //assert
             Assert.AreEqual(1, model.Count);
             Assert.IsInstanceOf<IEnumerable<UserModel>>(result.Model);
-
         }
 
         [Test]
