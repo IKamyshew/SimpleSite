@@ -14,7 +14,6 @@ namespace ASPNETSimple.WEB.Controllers
         public HomeController(IUserService userService)
         {
             UserService = userService;
-            logger.Info("Home controller created");
         }
 
         // GET: Home

@@ -16,3 +16,7 @@ textarea {
     max-width: 280px;
 }
 
+.row-width-standard {
+    width: 1000px;
+}
+
