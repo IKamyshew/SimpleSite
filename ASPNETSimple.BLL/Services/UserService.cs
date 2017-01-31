@@ -12,10 +12,10 @@ namespace ASPNETSimple.BLL.Services
 {
     public class UserService : IUserService
     {
-        private IUnitOfWork UnitOfWork;
+        private IUnitOfWork unitOfWork;
         public UserService(IUnitOfWork unitOfWork)
         {
-            UnitOfWork = unitOfWork;
+            this.unitOfWork = unitOfWork;
         }
 
         public ServiceResult GetAllUsers(out IEnumerable<UserModel> users)
@@ -23,10 +23,10 @@ namespace ASPNETSimple.BLL.Services
             users = null;
             try
             {
-                IEnumerable<User> entities = UnitOfWork.Users.GetAll();
+                IEnumerable<User> entities = unitOfWork.Users.GetAll();
 
                 if (entities.Count() == 0)
-                    return ServiceResult.Failed("There are no users in database");
+                    return ServiceResult.Success;
 
                 users = Mapper.Map<IEnumerable<User>, IEnumerable<UserModel>>(entities);
 
@@ -43,10 +43,10 @@ namespace ASPNETSimple.BLL.Services
             user = null;
             try
             {
-                User entity = UnitOfWork.Users.Get(id);
+                User entity = unitOfWork.Users.Get(id);
 
                 if (entity == null)
-                    return ServiceResult.Failed("Such user does not exist");
+                    return ServiceResult.Success;
 
                 user = Mapper.Map<User, UserModel>(entity);
 
@@ -62,10 +62,10 @@ namespace ASPNETSimple.BLL.Services
             user = null;
             try
             {
-                User entity = UnitOfWork.Users.Get(login, password);
+                User entity = unitOfWork.Users.Get(login, password);
 
                 if (entity == null)
-                    return ServiceResult.Failed("Such user does not exist");
+                    return ServiceResult.Success;
 
                 user = Mapper.Map<User, UserModel>(entity);
 
@@ -81,10 +81,13 @@ namespace ASPNETSimple.BLL.Services
         {
             try
             {
+                if (user == null)
+                    return ServiceResult.Failed("Cannot create null user.");
+
                 User entity = Mapper.Map<UserModel, User> (user);
 
-                UnitOfWork.Users.Create(entity);
-                UnitOfWork.Save();
+                unitOfWork.Users.Create(entity);
+                unitOfWork.Save();
 
                 return ServiceResult.Success;
             }

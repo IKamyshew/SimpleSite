@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETSimple.DAL", "ASPNETS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETSimple.BLL", "ASPNETSimple.BLL\ASPNETSimple.BLL.csproj", "{8CABEF06-C778-4504-B8C6-CDFA1BDF93DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETSimple.BLL.Tests", "ASPNET.BLL.Tests\ASPNETSimple.BLL.Tests.csproj", "{368D10C0-6767-4D4A-A8B9-889564BF95F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8CABEF06-C778-4504-B8C6-CDFA1BDF93DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CABEF06-C778-4504-B8C6-CDFA1BDF93DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CABEF06-C778-4504-B8C6-CDFA1BDF93DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368D10C0-6767-4D4A-A8B9-889564BF95F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368D10C0-6767-4D4A-A8B9-889564BF95F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368D10C0-6767-4D4A-A8B9-889564BF95F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368D10C0-6767-4D4A-A8B9-889564BF95F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
