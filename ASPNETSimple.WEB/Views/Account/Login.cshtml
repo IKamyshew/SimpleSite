@@ -4,23 +4,42 @@
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm("Login", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "" })
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
 
-    <div class="">
-        <label>@Html.LabelFor(m => m.Email): </label>
-        @Html.TextBoxFor(m => m.Email, new { @class = "", tabindex = "1", autofocus = "true", id = "email-input" })
+        @using (Html.BeginForm("Login", "Account", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "" })
+
+            <div class="col-md-12">
+                <div class="row row-margin">
+                    <label>@Html.LabelFor(m => m.Email): </label>
+                </div>
+                <div class="row row-margin">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", tabindex = "1", autofocus = "true", id = "email-input" })
+                </div>
+                <div class="row">@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })</div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row row-margin">
+                    <label>@Html.LabelFor(m => m.Password): </label>
+                </div>
+                <div class="row row-margin">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", tabindex = "2", id = "password-input" })
+                </div>
+                <div class="row">@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })</div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block" tabindex="3">Log in</button>
+        }
+
+        <div class="col-md-12">
+            <div class="row row-margin">
+                <label>First time here? @Html.ActionLink("Join now", "Register", "Account")</label>
+            </div>
+        </div>
+
     </div>
-    <div>@Html.ValidationMessageFor(m => m.Email, "", new { @class = "" })</div>
-
-    <div class="">
-        <label>@Html.LabelFor(m => m.Password): </label>
-        @Html.PasswordFor(m => m.Password, new { @class = "", tabindex = "2", id = "password-input" })
-    </div>
-    <div>@Html.ValidationMessageFor(m => m.Password, "", new { @class = "" })</div>
-
-    <input type="submit" value="Log in" class="" tabindex="3" />
-}
-<label>First time here? @Html.ActionLink("Join now", "Register", "Account")</label>
+</div>
