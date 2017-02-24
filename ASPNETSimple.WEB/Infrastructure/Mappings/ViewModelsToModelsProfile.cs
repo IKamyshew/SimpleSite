@@ -11,7 +11,7 @@ namespace ASPNETSimple.WEB.Infrastructure.Mappings
             get { return "ViewModelsToModelsProfile"; }
         }
 
-        protected override void Configure()
+        public ViewModelsToModelsProfile()
         {
             CreateMap<RegisterViewModel, UserModel>();
 
